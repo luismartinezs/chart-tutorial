@@ -29,12 +29,34 @@ import { getDimensions } from './api'
         labels: data.map(x => x.year),
         datasets: [
           {
-            label: 'Dimensions',
-            data: data.map(row => ({
-              x: row.width,
-              y: row.height,
-              r: row.count
-            }))
+            label: 'width = height',
+            data: data
+              .filter(row => row.width === row.height)
+              .map(row => ({
+                x: row.width,
+                y: row.height,
+                r: row.count
+              }))
+          },
+          {
+            label: 'width > height',
+            data: data
+              .filter(row => row.width > row.height)
+              .map(row => ({
+                x: row.width,
+                y: row.height,
+                r: row.count
+              }))
+          },
+          {
+            label: 'width < height',
+            data: data
+              .filter(row => row.width < row.height)
+              .map(row => ({
+                x: row.width,
+                y: row.height,
+                r: row.count
+              }))
           }
         ]
       }
