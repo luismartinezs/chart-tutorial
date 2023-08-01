@@ -1,5 +1,23 @@
-import Chart from 'chart.js/auto'
+import {
+  Chart,
+  Colors,
+  BarController,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Legend
+} from 'chart.js'
+
 import { getAquisitionsByYear } from './api'
+
+Chart.register(
+  Colors,
+  BarController,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Legend
+);
 
 (async function () {
   const data = await getAquisitionsByYear();
